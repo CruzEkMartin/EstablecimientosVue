@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('styles')
+    <!-- Load Leaflet from CDN-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" />
 @endsection
 
 @section('content')
@@ -84,8 +87,7 @@
 
                     <div class="form-group mt-3">
                         <label for="direccion">Dirección</label>
-                        <input type="text" id="direccion"
-                            class="form-control @error('direccion') is-invalid @enderror"
+                        <input type="text" id="direccion" class="form-control @error('direccion') is-invalid @enderror"
                             placeholder="Dirección" name="direccion" value="{{ old('direccion') }}">
 
                         @error('direccion')
@@ -97,8 +99,7 @@
 
                     <div class="form-group mt-3">
                         <label for="colonia">Colonia</label>
-                        <input type="text" id="colonia"
-                            class="form-control @error('colonia') is-invalid @enderror"
+                        <input type="text" id="colonia" class="form-control @error('colonia') is-invalid @enderror"
                             placeholder="Colonia" name="colonia" value="{{ old('colonia') }}">
 
                         @error('colonia')
@@ -121,5 +122,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-    
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet" defer></script>
+    <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
 @endsection
