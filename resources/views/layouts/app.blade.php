@@ -12,8 +12,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
- <!-- SweetAlert2 -->
- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    @yield('styles')
+
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -78,5 +82,8 @@
             @yield('content')
         </main>
     </div>
+
+    @yield('scripts')
+    
 </body>
 </html>
