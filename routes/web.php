@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstablecimientoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,8 @@ Route::get('/', function () {
 //* se agrega para se solicite la verificación del email del usuario
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth','verified']], function () {
+    Route::get('/establecimientos/create', [EstablecimientoController::class, 'create'])->name('establecimiento.create');
+    Route::get('/establecimientos/edit', [EstablecimientoController::class, 'edit'])->name('establecimiento.edit');
+});
+
