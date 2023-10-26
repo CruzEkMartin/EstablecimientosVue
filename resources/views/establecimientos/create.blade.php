@@ -4,12 +4,12 @@
     <!-- Load Leaflet from CDN-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <!-- Esri Leaflet Geocoder -->
-    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" />
+     <!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" /> 
 
-     <!-- Load Leaflet from CDN -->
+     {{-- <!-- Load Leaflet from CDN -->
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script> --}}
      
 @endsection
 
@@ -78,10 +78,15 @@
 
                     <div class="form-group mt-3">
                         <label for="formbuscador">Coloca la dirección del Establecimiento</label>
-                        <input type="text" id="formbuscador" class="form-control"
+                        <input 
+                            type="text" 
+                            id="formbuscador" 
+                            class="form-control"
                             placeholder="Calle del Establecimiento">
-                        <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una dirección estimada, mueve
+
+                        <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una dirección estimada o mueve
                             el pin al lugar correcto</p>
+                            
                     </div>
 
                     <div class="form-group mt-3">
@@ -127,15 +132,15 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-    <!-- Load Esri Leaflet from CDN -->
+   <!-- Load Esri Leaflet from CDN -->
     <script src="https://unpkg.com/esri-leaflet" defer></script>
-    <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
+     <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script> 
 
    
 
-    <!-- Load Esri Leaflet from CDN -->
+    {{-- <!-- Load Esri Leaflet from CDN -->
     <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
-    <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js"></script> --}}
 
 
 @endsection
