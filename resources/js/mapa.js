@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoPan: true
         }).addTo(map);
 
-        //aregar el marcador a la capa de marcadores
+        //agregar el marcador a la capa de marcadores
         markers.addLayer(marker);
 
         const apiKey = "AAPK8d111599842942be811bbeb3734a3215N5gV88mq8l2damroUHjKJxuUZDc2K6xlojdbax9UpI-qHn_uEYH0_U2yPW0AQAR2";
@@ -106,17 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
                                     map.setView(resultado.latlng);
 
                                     //agregar el pin
-
                                     marker = new L.Marker(resultado.latlng, {
                                         draggable: true,
                                         autoPan: true
                                     }).addTo(map);
 
-                                    //asignar el contenedor de markers el nuevo pin
+                                    //agregar el nuevo marker a la capa de markers
                                     markers.addLayer(marker);
 
                                     //mover el pin
-                                    reubicarMarker(markers)
+                                    reubicarMarker(marker)
 
                                 });
 

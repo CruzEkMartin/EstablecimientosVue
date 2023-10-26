@@ -42,3 +42,7 @@ app.mount('#app');
 
 
 import './mapa';
+
+import './bootstrap';
+
+import './dropzone';

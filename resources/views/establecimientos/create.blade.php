@@ -4,13 +4,14 @@
     <!-- Load Leaflet from CDN-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-     <!-- Esri Leaflet Geocoder -->
-    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" /> 
+    <!-- Esri Leaflet Geocoder -->
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" />
 
-     {{-- <!-- Load Leaflet from CDN -->
+    {{-- <!-- Load Leaflet from CDN -->
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script> --}}
-     
+
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endsection
 
 @section('content')
@@ -59,7 +60,7 @@
 
                     <div class="form-group mt-3">
                         <label for="imagen_principal">Imagen Principal</label>
-                        <input type="text" id="imagen_principal"
+                        <input type="file" id="imagen_principal"
                             class="form-control @error('imagen_principal') is-invalid @enderror"
                             placeholder="imagen_principal" name="imagen_principal" value="{{ old('imagen_principal') }}">
 
@@ -78,15 +79,12 @@
 
                     <div class="form-group mt-3">
                         <label for="formbuscador">Coloca la dirección del Establecimiento</label>
-                        <input 
-                            type="text" 
-                            id="formbuscador" 
-                            class="form-control"
+                        <input type="text" id="formbuscador" class="form-control"
                             placeholder="Calle del Establecimiento">
 
                         <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una dirección estimada o mueve
                             el pin al lugar correcto</p>
-                            
+
                     </div>
 
                     <div class="form-group mt-3">
@@ -123,6 +121,79 @@
                     <input type="hidden" id="lng" name="lng" value="{{ old('lng') }}">
 
                 </fieldset>
+
+                <fieldset class="border p-4 mt-3">
+
+                    <legend class="float-none w-auto px-3 text-primary">Información Establecimiento:</legend>
+
+                    <div class="form-group mt-3">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" class="form-control @error('telefono') is-invalid @enderror" id="telefono"
+                            placeholder="Teléfono Establecimiento" name="telefono" value="{{ old('telefono') }}">
+
+                        @error('telefono')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="descripcion">Descripción</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control @error('descripcion') is-invalid @enderror">{{ old('descripcion') }}</textarea>
+
+                        @error('descripcion')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+
+                    <div class="form-group mt-3">
+                        <label for="apertura">Hora Apertura:</label>
+                        <input type="time" class="form-control @error('apertura') is-invalid @enderror" id="apertura"
+                            name="apertura" value="{{ old('apertura') }}">
+
+                        @error('apertura')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="cierre">Hora Cierre:</label>
+                        <input type="time" class="form-control @error('cierre') is-invalid @enderror" id="cierre"
+                            name="cierre" value="{{ old('cierre') }}">
+
+                        @error('cierre')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset class="border p-4 mt-3">
+                    <legend class="float-none w-auto px-3 text-primary">Información Establecimiento:</legend>
+
+                    <div class="form-group mt-3">
+                        <label for="iamgenes">Imagenes</label>
+
+                        <div id="dropzone" class="dropzone form-control"></div>
+                    </div>
+
+                </fieldset>
+
+
+
+                <input type="hidden" id="uuid" name="uuid" value="{{ Str::uuid()->toString() }}">
+
+                <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Establecimiento">
+
             </form>
         </div>
     </div>
@@ -132,15 +203,13 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-   <!-- Load Esri Leaflet from CDN -->
+    <!-- Load Esri Leaflet from CDN -->
     <script src="https://unpkg.com/esri-leaflet" defer></script>
-     <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script> 
+    <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
 
-   
+
 
     {{-- <!-- Load Esri Leaflet from CDN -->
     <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
     <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js"></script> --}}
-
-
 @endsection
