@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 axios.post('/imagenes/destroy', params)
                     .then( respuesta => {
                         console.log(respuesta)
+
+                        //Eliminar del DOM
+                        file.previewElement.parentNode.removeChild(file.previewElement);
                     })
             }
 

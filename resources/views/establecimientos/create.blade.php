@@ -4,13 +4,11 @@
     <!-- Load Leaflet from CDN-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
     <!-- Esri Leaflet Geocoder -->
     <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" />
 
-    {{-- <!-- Load Leaflet from CDN -->
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script> --}}
-
+    <!-- Dropzone --> 
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endsection
 
@@ -21,7 +19,8 @@
         </h1>
 
         <div class="row mt-5 justify-content-center">
-            <form action="" class="col-md-9 col-xs-12 card card-body">
+            <form action="{{ route('establecimiento.store') }}" method="POST" class="col-md-9 col-xs-12 card card-body" enctype="multipart/form-data">
+                @csrf
                 <fieldset class="border p-4">
                     <legend class="float-none w-auto px-3 text-primary">Nombre, Categoría e Imagen Principal</legend>
 
@@ -181,7 +180,7 @@
                     <legend class="float-none w-auto px-3 text-primary">Información Establecimiento:</legend>
 
                     <div class="form-group mt-3">
-                        <label for="iamgenes">Imagenes</label>
+                        <label for="imagenes">Imagenes</label>
 
                         <div id="dropzone" class="dropzone form-control"></div>
                     </div>
@@ -207,9 +206,4 @@
     <script src="https://unpkg.com/esri-leaflet" defer></script>
     <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
 
-
-
-    {{-- <!-- Load Esri Leaflet from CDN -->
-    <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
-    <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js"></script> --}}
 @endsection

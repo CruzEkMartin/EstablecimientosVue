@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.querySelectorAll('#mapa')) {
 
-        const lat = 18.5030595;
-        const lng = -88.2947664;
+        const lat = document.querySelector('#lat').value === '' ? 18.5030595 : document.querySelector('#lat').value;
+        const lng = document.querySelector('#lng').value === '' ? -88.2947664 : document.querySelector('#lng').value;
+        
 
         const map = L.map('mapa').setView([lat, lng], 16);
 
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reubicarMarker(marker);
 
 
-
+        //****funcion para reubicar el marcador */
         function reubicarMarker(marker) {
             //detectar movimiento
             marker.on('moveend', function (e) {
@@ -67,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                     .latlng(posicion, 16)
                     .run(function (error, resultado) {
-                        //console.log(error);
-                        //console.log(resultado.address);
                         marker.bindPopup(resultado.address.LongLabel);
                         marker.openPopup();
 
@@ -79,8 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-
-
+        //****funcion para buscar una nueva dirección */
         function buscarDireccion(e) {
 
             if (e.target.value.length > 1) {
@@ -123,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                     .catch(error => {
                         //console.log(error);
-                        
+
                     })
             }
         }
