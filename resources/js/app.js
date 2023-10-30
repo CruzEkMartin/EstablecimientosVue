@@ -7,7 +7,7 @@
 import './bootstrap';
 import { createApp } from 'vue';
 
-Window.Swal = require('sweetalert2');
+// Window.Swal = require('sweetalert2');
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,8 +17,9 @@ Window.Swal = require('sweetalert2');
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import PaginaInicio from './components/PaginaInicio.vue';
+app.component('pagina-inicio', PaginaInicio);
+
 
 /**
  * The following block of code may be used to automatically register your

@@ -9,7 +9,7 @@ class Establecimiento extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'nombre',
         'categoria_id',
         'imagen_principal',
@@ -24,4 +24,12 @@ class Establecimiento extends Model
         'uuid',
         'user_id'
     ];
+
+
+    //relación para indicar que el establecimiento pertenece a una categoria y poder devolver el nombre 
+    //de la categoria, en lugar de categoria_id, al consultar el modelo
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }

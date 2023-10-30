@@ -43,7 +43,7 @@ class EstablecimientoController extends Controller
         $data = $request->validate([
             'nombre' => 'required',
             'categoria_id' => 'required|exists:categorias,id',
-            'imagen_principal' => 'required|image|max:1000',
+            'imagen_principal' => 'required|image|max:3000',
             'direccion' => 'required',
             'colonia' => 'required',
             'lat' => 'required',

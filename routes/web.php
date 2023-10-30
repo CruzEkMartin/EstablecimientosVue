@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\EstablecimientoController;
+use App\Http\Controllers\InicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Http\Controllers\EstablecimientoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', InicioController::class)->name('inicio');
 
 //* se agrega para se solicite la verificación del email del usuario
 Auth::routes(['verify' => true]);

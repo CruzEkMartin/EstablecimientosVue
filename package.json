@@ -19,6 +19,7 @@
     "dependencies": {
         "dropzone": "^6.0.0-beta.2",
         "leaflet-geosearch": "^3.10.2",
-        "sweetalert2": "^11.6.13"
+        "sweetalert2": "^11.6.13",
+        "vuex": "^4.0.2"
     }
 }
