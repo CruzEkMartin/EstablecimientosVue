@@ -28,16 +28,19 @@
 
 <script>
 export default {
-  data: function () {
-    return {
-      cafes: []
-    }
-  },
   mounted() {
+    //consultamos al backend
     axios.get('/api/categorias/cafe')
       .then(respuesta => {
-        this.cafes = respuesta.data;
+        //mandamos al store los datos devueltos, con eso se modifica el state
+        this.$store.commit("AGREGAR_CAFES", respuesta.data);
       })
+  },
+  computed:{
+    cafes(){
+      //se trae los valores del state para trabajarlos en el template
+      return this.$store.state.cafes;
+    }
   }
 }
 </script>

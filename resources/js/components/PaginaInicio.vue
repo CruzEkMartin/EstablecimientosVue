@@ -12,7 +12,10 @@ import CategoriaCafe from './CategoriaCafe.vue'
 import CategoriaBar from './CategoriaBar.vue'
 import CategoriaHospital from './CategoriaHospital.vue'
 
+import store from '../store'
+
 export default {
+    store,
     components: {
         CategoriaCafe,
         CategoriaBar,

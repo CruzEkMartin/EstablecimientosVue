@@ -14,12 +14,12 @@
         "postcss": "^8.1.14",
         "sass": "^1.56.1",
         "vite": "^3.0.0",
-        "vue": "^3.2.37"
+        "vue": "^3.2.37",
+        "vuex": "^4.1.0"
     },
     "dependencies": {
         "dropzone": "^6.0.0-beta.2",
         "leaflet-geosearch": "^3.10.2",
-        "sweetalert2": "^11.6.13",
-        "vuex": "^4.0.2"
+        "sweetalert2": "^11.6.13"
     }
 }
