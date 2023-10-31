@@ -1,22 +1,22 @@
 import { createStore } from 'vuex'
 
-
-
-//state se relacionan los valores de las consultas al backend y quedan disponibles para su visualización
-//mutations para modificar el state ya sea consultando los valores o asignando los cambios
-export default createStore({
+export const store = createStore({
     state: {
-        cafes: []
+        cafes: [],
+        bar: [],
+        hospital:[],
     },
     mutations: {
-        AGREGAR_CAFES(state, cafes){
-            state.cafes = cafes;
+        //accede al state y le asigna lo que mande desde la consulta al backend
+        AGREGAR_CAFES(state, payload) {
+            state.cafes = payload
+        },
+        AGREGAR_BAR(state, payload) {
+            state.bar = payload
+        },
+        AGREGAR_HOSPITAL(state, payload) {
+            state.hospital = payload
         }
-    },
-    actions: {
-
-    },
-    modules: {
     }
 
-})
+});

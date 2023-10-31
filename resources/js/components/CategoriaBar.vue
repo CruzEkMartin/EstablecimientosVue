@@ -27,18 +27,28 @@
  </template>
  
  <script>
- export default {
-   data: function () {
-     return {
-       bares: []
-     }
-   },
-   mounted() {
-     axios.get('/api/categorias/bar')
-       .then(respuesta => {
-         this.bares = respuesta.data;
-       })
-   }
- }
+ 
+import { store } from '../store'
+
+export default {
+  
+    //cuando se monte el componente se hace una llamada al backend para obtener los datos de la categoria
+    mounted() {
+      //consultamos al backend
+      axios.get('/api/categorias/bar')
+        .then(respuesta => {
+          //mandamos al store (mutations) los datos devueltos, con eso se modifica el state
+          store.commit("AGREGAR_BAR", respuesta.data);
+        })
+    },
+    computed: {
+      bares(){
+        //se trae los valores del state para trabajarlos en el template
+        return store.state.bar;
+      }
+    }
+
+
+  }
  </script>
  

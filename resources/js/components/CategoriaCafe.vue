@@ -12,7 +12,7 @@
             <p class="card-text">{{ cafe.direccion }}</p>
             <p class="card-text">
               <span class="font-weight-bold">Horario:</span>
-              {{ cafe.apertura}} - {{ cafe.cierre }}
+              {{ cafe.apertura }} - {{ cafe.cierre }}
             </p>
 
             <a href="" class="btn btn-primary d-block">Ver Lugar</a>
@@ -27,20 +27,29 @@
 </template>
 
 <script>
+
+import { store } from '../store'
+
 export default {
-  mounted() {
-    //consultamos al backend
-    axios.get('/api/categorias/cafe')
-      .then(respuesta => {
-        //mandamos al store los datos devueltos, con eso se modifica el state
-        this.$store.commit("AGREGAR_CAFES", respuesta.data);
-      })
-  },
-  computed:{
-    cafes(){
-      //se trae los valores del state para trabajarlos en el template
-      return this.$store.state.cafes;
+  
+    //cuando se monte el componente se hace una llamada al backend para obtener los datos de la categoria
+    mounted() {
+      //consultamos al backend
+      axios.get('/api/categorias/cafe')
+        .then(respuesta => {
+          //mandamos al store (mutations) los datos devueltos, con eso se modifica el state
+          store.commit("AGREGAR_CAFES", respuesta.data);
+        })
+    },
+    computed: {
+      cafes(){
+        //se trae los valores del state para trabajarlos en el template
+        return store.state.cafes;
+      }
     }
+
+
   }
-}
+
+
 </script>

@@ -27,17 +27,27 @@
 </template>
 
 <script>
+
+import { store } from '../store'
+
 export default {
-  data: function () {
-    return {
-      hospitales: []
+  
+    //cuando se monte el componente se hace una llamada al backend para obtener los datos de la categoria
+    mounted() {
+      //consultamos al backend
+      axios.get('/api/categorias/hospital')
+        .then(respuesta => {
+          //mandamos al store (mutations) los datos devueltos, con eso se modifica el state
+          store.commit("AGREGAR_HOSPITAL", respuesta.data);
+        })
+    },
+    computed: {
+      hospitales(){
+        //se trae los valores del state para trabajarlos en el template
+        return store.state.hospital;
+      }
     }
-  },
-  mounted() {
-    axios.get('/api/categorias/hospital')
-      .then(respuesta => {
-        this.hospitales = respuesta.data;
-      })
+
+
   }
-}
 </script>
