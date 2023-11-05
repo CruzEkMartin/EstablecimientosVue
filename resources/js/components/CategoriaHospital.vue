@@ -15,7 +15,7 @@
               {{ hospital.apertura}} - {{ hospital.cierre }}
             </p>
 
-            <a href="" class="btn btn-primary d-block">Ver Lugar</a>
+            <router-link :to="{name: 'establecimiento', params: { id: hospital.id}}"> <a class="btn btn-primary d-block">Ver Lugar</a></router-link>
 
 
           </div>

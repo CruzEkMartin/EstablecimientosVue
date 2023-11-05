@@ -15,10 +15,15 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+import router from './router';
 
+const app = createApp({});
 import PaginaInicio from './components/PaginaInicio.vue';
 app.component('pagina-inicio', PaginaInicio);
+
+//createApp(PaginaInicio)
+//.use(router)
+//.mount("#app")
 
 
 /**
@@ -38,6 +43,8 @@ app.component('pagina-inicio', PaginaInicio);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+
+app.use(router);
 
 app.mount('#app');
 

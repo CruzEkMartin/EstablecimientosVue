@@ -11,16 +11,21 @@ class APIController extends Controller
     //obtener todas las categorias
     public function categorias()
     {
-        $categorias =Categoria::all();
+        $categorias = Categoria::all();
         return response()->json($categorias);
     }
 
     //muesta los entablecimientos de la categoria indicada
     public function categoria(Categoria $categoria)
     {
-        
-//se devuelve todos los datos de la tabla del establecimiento así como los todos los datos de la tabla de la categoria relacionada 
+
+        //se devuelve todos los datos de la tabla del establecimiento así como los todos los datos de la tabla de la categoria relacionada 
         $establecimientos = Establecimiento::where('categoria_id', $categoria->id)->with('categoria')->get();
         return response()->json($establecimientos);
+    }
+
+    //muestra un establecimiento en especifico
+    public function show(Establecimiento $establecimiento){
+        return response()->json($establecimiento);
     }
 }
