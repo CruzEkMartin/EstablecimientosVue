@@ -1,22 +1,28 @@
 <template>
     <div class="mapa">
-        <l-map
-        :zoom="zoom"
-        :center="center"
-        :options="mapOptions"
-        >
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <l-map :zoom="zoom" :center="center" :options="mapOptions">
+            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+
+            <l-marker :latLng="{lat, lng}">
+                <l-tooltip>
+
+                </l-tooltip>
+            </l-marker>
         </l-map>
     </div>
 </template>
 
 <script>
-import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet';
+import { store } from '../store'
 import { latLng } from 'leaflet';
+import { LMap, LTileLayer, LMarker, LTooltip } from '@vue-leaflet/vue-leaflet';
+
 export default {
     components: {
         LMap,
-    LTileLayer,
+        LTileLayer,
+        LMarker,
+        LTooltip
     },
     data() {
         return {
@@ -33,12 +39,18 @@ export default {
             lat: "",
             lng: ""
         };
+    },
+    created(){
+        console.log(store.getters.obtenerEstablecimiento.lat);
+        this.lat = store.getters.obtenerEstablecimiento.lat;
+        this.lng = store.getters.obtenerEstablecimiento.lng;
     }
 }
 </script>n
 
 <style scoped>
 @import 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+
 .mapa {
     height: 300px;
     width: 100%;
