@@ -1,11 +1,11 @@
 <template>
     <div class="mapa">
-        <l-map :zoom="zoom" :center="center" :options="mapOptions">
-            <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <l-map ref="mapa" v-model:zoom="zoom" :center="center" :options="mapOptions">
+            <l-tile-layer :url="url" :attribution="attribution" />
 
-            <l-marker :latLng="{lat, lng}">
+            <l-marker :lat-lng="{ lat, lng }">
                 <l-tooltip>
-
+                    <div>{{ establecimiento.nombre }}</div>
                 </l-tooltip>
             </l-marker>
         </l-map>
@@ -13,9 +13,11 @@
 </template>
 
 <script>
-import { store } from '../store'
-import { latLng } from 'leaflet';
+import { store } from '@/store'
+import { L, latLng } from 'leaflet';
+import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer, LMarker, LTooltip } from '@vue-leaflet/vue-leaflet';
+
 
 export default {
     components: {
@@ -29,8 +31,7 @@ export default {
             zoom: 16,
             center: latLng(18.5030595, -88.2947664),
             url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            attribution:
-                '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             currentZoom: 11.5,
             mapOptions: {
                 zoomSnap: 0.5
@@ -40,13 +41,22 @@ export default {
             lng: ""
         };
     },
-    created(){
-        console.log(store.getters.obtenerEstablecimiento.lat);
-        this.lat = store.getters.obtenerEstablecimiento.lat;
-        this.lng = store.getters.obtenerEstablecimiento.lng;
+    created() {
+        setTimeout(() => {
+            this.lat = store.getters.obtenerEstablecimiento.lat;
+            this.lng = store.getters.obtenerEstablecimiento.lng;
+            this.center = latLng(this.lat, this.lng);
+        }, 300);
+    },
+    computed: {
+        establecimiento() {
+            //se trae los valores del state para trabajarlos en el template
+            return store.getters.obtenerEstablecimiento;
+        }
     }
+
 }
-</script>n
+</script>
 
 <style scoped>
 @import 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
