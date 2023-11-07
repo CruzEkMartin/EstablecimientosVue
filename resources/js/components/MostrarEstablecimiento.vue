@@ -48,20 +48,6 @@
                         {{ establecimiento.telefono }}
                     </p>
 
-
-                    <p class="text-white mt-1">
-                        <span class="fw-bold">
-                            Latitud:
-                        </span>
-                        {{ establecimiento.lat }}
-                    </p>
-
-                    <p class="text-white mt-1">
-                        <span class="fw-bold">
-                            Longitud:
-                        </span>
-                        {{ establecimiento.lng }}
-                    </p>
                 </div>
             </aside>
         </div>
