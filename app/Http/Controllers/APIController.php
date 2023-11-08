@@ -9,6 +9,14 @@ use App\Models\Imagen;
 
 class APIController extends Controller
 {
+
+    //metodo para obtener todos los establecimient  
+    public function index(){
+        $establecimientos = Establecimiento::with('categoria')->get();
+
+        return response()->json($establecimientos);
+    }
+
     //obtener todas las categorias
     public function categorias()
     {

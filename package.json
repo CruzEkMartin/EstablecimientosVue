@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "dropzone": "^6.0.0-beta.2",
+        "jquery": "^3.7.1",
         "leaflet-geosearch": "^3.10.2",
         "sweetalert2": "^11.6.13",
         "vue-router": "^4.2.5"
