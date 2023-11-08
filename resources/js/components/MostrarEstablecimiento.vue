@@ -8,6 +8,7 @@
                 <p class="mt-5">
                     {{ establecimiento.descripcion }}
                 </p>
+                <galeria-imagenes></galeria-imagenes>
             </div>
 
             <aside class="col-md-4 ">
@@ -58,11 +59,13 @@
 
 import { store } from '../store'
 import MapaUbicacion from './MapaUbicacion.vue'
+import GaleriaImagenes from './GaleriaImagenes.vue'
 
 export default {
 
     components: {
-        MapaUbicacion
+        MapaUbicacion,
+        GaleriaImagenes
     },
     //cuando se monte el componente se hace una llamada al backend para obtener los datos de la categoria
     mounted() {

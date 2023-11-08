@@ -29,6 +29,9 @@ export const store = createStore({
     getters: {
         obtenerEstablecimiento: state => {
             return state.establecimiento
+        },
+        obtenerImagenes: state => {
+            return state.establecimiento.imagenes
         }
     }
 
