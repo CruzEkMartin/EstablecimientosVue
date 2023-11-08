@@ -5,6 +5,10 @@
  */
 
 import './bootstrap';
+
+import jQuery from 'jquery';
+window.$ = jQuery;
+
 import { createApp } from 'vue';
 
 // Window.Swal = require('sweetalert2');
