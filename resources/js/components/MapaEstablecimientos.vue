@@ -16,7 +16,8 @@
 
 <script>
 import { store } from '@/store'
-import { L, latLng } from 'leaflet';
+import  L from 'leaflet';
+import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LTooltip, LIcon } from '@vue-leaflet/vue-leaflet';
 
 
@@ -65,12 +66,12 @@ export default {
         },
         iconoEstablecimiento(establecimiento){
             //console.log(establecimiento.categoria.slug)
-            // const { slug } = establecimiento.categoria;
+            const { slug } = establecimiento.categoria;
             
-            // return L.icon({
-            //     iconSize: [40,50],
-            //     iconUrl: `images/iconos/${slug}.png`,
-            // })
+            return L.icon({
+                iconSize: [40,50],
+                iconUrl: `images/iconos/${slug}.png`,
+            })
         }
     }
 }

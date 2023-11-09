@@ -7,7 +7,9 @@ export const store = createStore({
         hospital: [],
         hotel: [],
         establecimiento: {},
-        establecimientos: []
+        establecimientos: [],
+        categorias: [],
+        categoria: ''
     },
     mutations: {
         //accede al state y le asigna lo que mande desde la consulta al backend
@@ -28,6 +30,12 @@ export const store = createStore({
         },
         AGREGAR_ESTABLECIMIENTOS(state, payload) {
             state.establecimientos = payload
+        },
+        AGREGAR_CATEGORIAS(state, payload){
+            state.categorias = payload
+        },
+        SELECCIONAR_CATEGORIA(state, payload){
+            state.categoria = payload
         }
     },
     getters: {
@@ -39,6 +47,12 @@ export const store = createStore({
         },
         obtenerEstablecimientos : state => {
             return state.establecimientos
+        },
+        obtenerCategorias : state => {
+            return state.categorias
+        },
+        obtenerCategoria : state => {
+            return state.categoria
         }
     }
 
