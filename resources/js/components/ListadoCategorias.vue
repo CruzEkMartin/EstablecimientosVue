@@ -1,6 +1,7 @@
 <template>
     <div>
         <nav class="d-flex flex-row container justify-content-center">
+            <a @click = "seleccionarTodos()" class="m-0" >Todos</a>
             <a v-for="categoria in categorias"
                 v-bind:key="categoria.id"
                 class="m-0"
@@ -32,6 +33,14 @@ export default {
         seleccionarCategoria(categoria){
             store.commit('SELECCIONAR_CATEGORIA', categoria.slug)
             //console.log(categoria.slug)
+        },
+        seleccionarTodos(){
+            //console.log("buscando todos");
+            axios.get('api/establecimientos')
+            .then(respuesta => {
+                //console.log(respuesta.data)
+                store.commit('AGREGAR_ESTABLECIMIENTOS', respuesta.data)
+            })
         }
     }
 }
@@ -70,18 +79,21 @@ nav a:nth-child(3){
 }
 
 nav a:nth-child(4){
-    background-color: #1A6566;
+    background-color: #0b3b3b;
 }
 
 nav a:nth-child(5){
-    background-color: #5D8A66;
+    background-color: #1A6566;
 }
 
 nav a:nth-child(6){
-    background-color: #75AA9E;
+    background-color: #5D8A66;
 }
 
 nav a:nth-child(7){
+    background-color: #75AA9E;
+}
+nav a:nth-child(8){
     background-color: #A8C5E5;
 }
 </style>

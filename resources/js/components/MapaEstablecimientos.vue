@@ -2,8 +2,12 @@
     <div class="mapa">
         <l-map v-model:zoom="zoom" :center="center" :options="mapOptions" :use-global-leaflet="false">
             <l-tile-layer :url="url" :attribution="attribution" />
-            <l-marker v-for="establecimiento in establecimientos" v-bind:key="establecimiento.id"
-                :lat-lng="obtenerCoordenadas(establecimiento)" :icon="iconoEstablecimiento(establecimiento)">
+            <l-marker v-for="establecimiento in establecimientos" 
+                        v-bind:key="establecimiento.id"
+                        :lat-lng="obtenerCoordenadas(establecimiento)" 
+                        :icon="iconoEstablecimiento(establecimiento)"
+                        @click="redireccionar(establecimiento.id)"
+                        >
                 <l-tooltip>
                     <div>
                         {{ establecimiento.nombre }} - {{ establecimiento.categoria.nombre }}
@@ -72,6 +76,9 @@ export default {
                 iconSize: [40, 50],
                 iconUrl: `images/iconos/${slug}.png`,
             })
+        },
+        redireccionar(id) {
+            this.$router.push({name: 'establecimiento', params: { id }})
         }
     },
 
