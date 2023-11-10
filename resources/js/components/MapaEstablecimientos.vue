@@ -16,10 +16,10 @@
 
 <script>
 import { store } from '@/store'
-import  L from 'leaflet';
+import L from 'leaflet';
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker, LTooltip, LIcon } from '@vue-leaflet/vue-leaflet';
-
+import { watch, computed } from "vue";
 
 export default {
     components: {
@@ -64,16 +64,35 @@ export default {
                 lng: establecimiento.lng
             }
         },
-        iconoEstablecimiento(establecimiento){
+        iconoEstablecimiento(establecimiento) {
             //console.log(establecimiento.categoria.slug)
             const { slug } = establecimiento.categoria;
-            
+
             return L.icon({
-                iconSize: [40,50],
+                iconSize: [40, 50],
                 iconUrl: `images/iconos/${slug}.png`,
             })
         }
-    }
+    },
+
+    setup() {
+        //const store = useStore();
+
+        //si se selecciona un elemento del menu obtenemos los establecimientos
+        watch(() => store.state.categoria, function () {
+            //console.log('value changes detected');
+            axios.get('/api/' + store.getters.obtenerCategoria)
+                .then(respuesta => {
+                    //console.log(respuesta)
+                    store.commit('AGREGAR_ESTABLECIMIENTOS', respuesta.data)
+                })
+        });
+
+        return {
+            myvalue: computed(() => store.state.categoria)
+        }
+    },
+
 }
 </script>
 

@@ -30,8 +30,8 @@ export default {
     },
     methods: {
         seleccionarCategoria(categoria){
-            store.commit('SELECCIONAR_CATEGORIA', categoria.data)
-            console.log(categoria.slug)
+            store.commit('SELECCIONAR_CATEGORIA', categoria.slug)
+            //console.log(categoria.slug)
         }
     }
 }
