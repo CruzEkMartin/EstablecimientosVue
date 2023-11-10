@@ -40,7 +40,7 @@ export default {
 <style scoped>
 
 div{
-    background-color: #6272d4;
+    background-color: #EBEFF5;
 }
 
 nav a{
