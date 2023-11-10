@@ -5,9 +5,13 @@
  */
 
 import './bootstrap';
+
+import jQuery from 'jquery';
+window.$ = jQuery;
+
 import { createApp } from 'vue';
 
-Window.Swal = require('sweetalert2');
+// Window.Swal = require('sweetalert2');
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -15,10 +19,16 @@ Window.Swal = require('sweetalert2');
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+import router from './router';
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+const app = createApp({});
+import PaginaInicio from './components/PaginaInicio.vue';
+app.component('pagina-inicio', PaginaInicio);
+
+//createApp(PaginaInicio)
+//.use(router)
+//.mount("#app")
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -38,4 +48,11 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
+app.use(router);
+
 app.mount('#app');
+
+
+import './mapa';
+
+import './dropzone';

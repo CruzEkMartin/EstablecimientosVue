@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\EstablecimientoController;
+use App\Http\Controllers\InicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', InicioController::class)->name('inicio');
 
 //* se agrega para se solicite la verificación del email del usuario
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth','verified']], function () {
+    Route::get('/establecimiento/create', [EstablecimientoController::class, 'create'])->name('establecimiento.create');
+    Route::post('/establecimiento', [EstablecimientoController::class, 'store'])->name('establecimiento.store');
+    Route::get('/establecimiento/edit', [EstablecimientoController::class, 'edit'])->name('establecimiento.edit');
+
+    //rutas para el archivo de frontend dropzone.js
+    Route::post('/imagenes/store', [ImagenController::class, 'store'])->name('imagenes.store');
+    Route::post('/imagenes/destroy', [ImagenController::class, 'destroy'])->name('imagenes.destroy');
+   
+    
+
+    Route::get('/lectorQR', [EstablecimientoController::class, 'show'])->name('lectorQR.show');
+});
+
+
