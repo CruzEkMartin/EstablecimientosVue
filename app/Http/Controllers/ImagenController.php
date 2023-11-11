@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Imagen;
 use Illuminate\Http\Request;
+use App\Models\Establecimiento;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
@@ -39,6 +40,15 @@ class ImagenController extends Controller
     {
 
         //se obtiene la ruta y el uuid de la imagen 
+        $uuid = $request->get('uuid');
+
+        //consultar establecimiento
+        $establecimiento = Establecimiento::where('uuid', $uuid)->firts();
+        
+        //aplicamos la policy para autorizar el borrado 
+        $this->authorize('delete', $establecimiento);
+
+        //Imagen a eliminar
         $imagen = $request->get('imagen');
 
         //elimina la imagen del servidor y de la base de datos
