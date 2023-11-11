@@ -3,7 +3,7 @@
         <l-map ref="mapa" v-model:zoom="zoom" :center="center" :options="mapOptions">
             <l-tile-layer :url="url" :attribution="attribution" />
 
-            <l-marker :lat-lng="{ lat, lng }">
+            <l-marker :lat-lng= "{ lat, lng }">
                 <l-tooltip>
                     <div>{{ establecimiento.nombre }}</div>
                 </l-tooltip>
@@ -43,6 +43,7 @@ export default {
     },
     created() {
         setTimeout(() => {
+            console.log(store.getters.obtenerEstablecimiento.lat);
             this.lat = store.getters.obtenerEstablecimiento.lat;
             this.lng = store.getters.obtenerEstablecimiento.lng;
             this.center = latLng(this.lat, this.lng);

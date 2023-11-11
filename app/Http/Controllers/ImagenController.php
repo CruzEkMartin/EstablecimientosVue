@@ -38,19 +38,23 @@ class ImagenController extends Controller
     public function destroy(Request $request)
     {
 
+        //se obtiene la ruta y el uuid de la imagen 
         $imagen = $request->get('imagen');
 
+        //elimina la imagen del servidor y de la base de datos
         if (File::exists('storage/' . $imagen)) {
+            //elimina la imagen del servidor
             File::delete('storage/' . $imagen);
+
+            //elimina la imagen de la base de datos
+            Imagen::where('ruta_imagen', $imagen )->delete();
+
+            $respuesta = [
+                'mensaje' => 'Imagen Eliminada',
+                'imagen' => $imagen
+            ];
+
         }
-
-        $respuesta = [
-            'mensaje' => 'Imagen Eliminada',
-            'imagen' => $imagen
-        ];
-
-        $imagenEliminar = Imagen::where('ruta_imagen', '=', $imagen)->firstOrFail();
-        Imagen::destroy($imagenEliminar->id);
 
         //enviamos la respuesta al front end. Se recibe en la función removedfile del archivo resources/js/dropzone.js
         return response()->json($respuesta);

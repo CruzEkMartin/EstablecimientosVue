@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Establecimiento;
+use App\Models\Imagen;
 use Intervention\Image\Facades\Image;
 
 class EstablecimientoController extends Controller
@@ -119,7 +120,18 @@ class EstablecimientoController extends Controller
     public function edit(Establecimiento $establecimiento)
     {
         //
-        return "desde edit";
+        $categorias = Categoria::all();
+        //obtener establecimiento
+        $establecimiento = auth()->user()->establecimiento;
+        //sobreescribimos la hora de apertura y cierre para devolver solo la hora y los minutos
+        $establecimiento->apertura = date('H:i', strtotime($establecimiento->apertura));
+        $establecimiento->cierre = date('H:i', strtotime($establecimiento->cierre));
+
+        //obtiene las imagenes del establecimiento para mostrarlo en dropzone
+        $imagenes = Imagen::where('id_establecimiento', $establecimiento->uuid)->get();
+        //dd($imagenes);
+
+        return view('establecimientos.edit', compact('categorias','establecimiento','imagenes'));
     }
 
     /**
